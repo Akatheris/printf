@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+/* ************************************************************************* */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_arg.c                                          :+:      :+:    :+:   */
@@ -6,7 +6,7 @@
 /*   By: mlauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:29:44 by mlauer            #+#    #+#             */
-/*   Updated: 2018/05/02 18:25:26 by mlauer           ###   ########.fr       */
+/*   Updated: 2018/06/14 15:31:42 by mlauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int		get_conversion(t_arg *arg, const char *str, size_t *i)
 {
-	if (ft_is_conversion(str[*i]))
+	if (str[*i] == '%')
+		(*i)++;
+	if (!(ft_is_conversion(str[*i])))
 			{
 				arg->conversion = str[*i];
 				(*i)++;
@@ -31,9 +33,48 @@ int		get_pres(t_arg *arg, const char *str, size_t *i)
 	return (0);
 }
 
-int		get_flqg(t_arg *arg, const char *str, size_t *i)
+int		get_width(t_arg *arg, const char *str, size_t *i)
 {
+	int		width;
 
+	width = 0;
+	if (str[*i] == '*')
+		(*i)++;
+	width = ft_atoi(&str[*i]);
+	if (width)
+	{
+		if (str[*i] == '$')
+			(*i)++;
+		else 
+			return (-1);
+		arg->width = width;
+	}
+	return (0);
+}
+int		get_flag(t_arg *arg, const char *str, size_t *i)
+{
+	char	c;
+
+	while (*i < arg->lenght)
+	{
+		c = str[*i];
+		if (ft_is_flag(c))
+		{
+			if (c == '#')
+				arg->flag = '#';
+			else if (c == '0' && arg->flag != '-')
+				arg->flag = '0';
+			else if (c == '+')
+				arg->flag = '+';
+			else if (c == '-')
+				arg->flag = '-';
+			else if (c == ' ' && arg->flag != '+')
+				arg->flag = ' ';
+		}
+		else
+			return (-1);
+		(*i)++;
+	}
 	return (0);
 }
 int		get_modif(t_arg *arg, const char *str, size_t *i)

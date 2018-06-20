@@ -6,7 +6,7 @@
 /*   By: mlauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 10:42:44 by mlauer            #+#    #+#             */
-/*   Updated: 2018/05/09 10:53:24 by mlauer           ###   ########.fr       */
+/*   Updated: 2018/06/06 15:39:41 by mlauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 t_arg		ft_init_arg(const char *str, int len)
 {
 	t_arg		arg;
-	t_string	tstr;
-	tstr.len = len;
-	tstr.str = str;
+
+	arg.len = len;
+	arg.str = str;
 	arg.flag = 0;
 	arg.width = 0;
 	arg.pres = 0;

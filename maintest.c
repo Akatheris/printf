@@ -6,17 +6,17 @@
 /*   By: mlauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/05 14:35:59 by mlauer            #+#    #+#             */
-/*   Updated: 2018/04/11 14:30:32 by mlauer           ###   ########.fr       */
+/*   Updated: 2018/06/20 15:50:20 by mlauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stdio.h"
+#include "printf.h"
 
 int		main(void)
 {
-	int *i;
+	int  i;
 
-	i = 1;
-	printf("%S",i);
+	i = 777;
+	ft_printf("%x-1");
 	return (0);
 }

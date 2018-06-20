@@ -6,7 +6,7 @@
 /*   By: mlauer <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/12 15:53:28 by mlauer            #+#    #+#             */
-/*   Updated: 2018/04/12 16:12:10 by mlauer           ###   ########.fr       */
+/*   Updated: 2018/06/06 15:45:13 by mlauer           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,12 @@ int		ft_is_pres(char c)
 	if (ft_strfind("$*.", c))
 		return(-1);
 	return (0);
+}
+
+int		ft_is_valid(char c)
+{
+	if (ft_is_conversion(c) || ft_is_modif(c) || ft_is_flag(c) 
+			|| ft_is_pres(c))
+			return (-1);
+		return (0);
 }
